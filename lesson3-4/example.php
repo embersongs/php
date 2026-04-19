@@ -1,4 +1,13 @@
 <?php
+//константы
+
+const PI = 3.14;
+define("PI", 3.14);
+
+echo PI;
+echo "<pre>";
+print_r(get_defined_constants());
+
 //Взятие адреса
 $x = 1;
 
@@ -151,3 +160,41 @@ do {
     $i++;
 } while ($i <= 5);
 
+//цикл альернативный синтаксис
+//SSR - server side rendering
+//react это SPA - single page application c беком работает через api (язык машин)
+$i = 1;
+$postsNumbers = 5;
+?>
+<?php for ($i = 0; $i < $postsNumbers; $i++): ?>
+    <div>текст поста <?=$i?></div>
+<?php endfor;?>
+
+<?php
+//Диалоги в консоли
+$name = readline("Enter your name: ");
+echo "Привет $name";
+
+//битовые операции
+$f = 0xFFFFF; //16
+$x = 0b011; //3 в двоичной
+$y = 0b100; //4 двоичная
+$option1 = 0b00001;
+$option2 = 0b00010;
+//ИЛИ
+//     111  - 7
+//или |
+//И &
+//XOR ^
+//echo $option1 | $option2; // 11
+
+
+if ((16 & 1) === 0) {
+    echo "четное";
+} else {
+    echo "Не четное";
+}
+
+//битовый сдвиг
+$x = 2; //00010  <<1 00100 4
+echo $x << 2;
