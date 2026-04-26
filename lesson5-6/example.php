@@ -80,13 +80,14 @@ $users = [
     ],
 
 ];
+
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>hh</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <h2>Список кандидатов</h2>
@@ -95,7 +96,7 @@ $users = [
 <?php foreach ($users as $user): ?>
     <div style="background-color: silver;padding: 10px; margin: 10px">
         <h3><?= $user['name'] ?></h3>
-        <img src="./images/<?=$user['photo']?>" alt="" width="100"><br>
+        <img src="/images/<?=$user['photo']?>" alt="" width="100"><br>
         Возраст: <?= $user['age'] ?><br>
         Навыки: <br>
         <ol>
@@ -216,3 +217,34 @@ foreach (getLargeDataSet(100_000_000) as $row) {
 }
 
 echo 'Пиковое потребление: ' . memory_get_peak_usage() . " байт\n";
+
+//деструктуризация массивов
+$arr = [1, 2];
+
+[$first, $second] = $arr;
+
+echo $first;
+
+$user = [
+    'name' => 'John Doe',
+    'email' => 'john@doe.com',
+];
+
+['name' => $userName, 'email' => $userEmail] = $user;
+
+echo $userName;
+echo $userEmail;
+
+//spread оператор ...
+
+$arr1 = [1, 2, 3];
+$arr2 = [1, 2, 3];
+$merged = [...$arr1, ...$arr2];
+
+echo foo2(...$arr1);
+
+function foo2($a, $b, $c)
+{
+    return $a . $b . $c;
+}
+
