@@ -1,14 +1,31 @@
 <?php
-require __DIR__ . '/functions/app.php';
+require __DIR__.'/vendor/autoload.php';
+/*require __DIR__ . '/functions/app.php';
+require __DIR__ . '/functions/categories.php';
+require __DIR__ . '/functions/posts.php';*/
+
+use function CompanyName\Blog\getPosts;
+use function CompanyName\Blog\redirectToError;
+
 
 try {
 
     $posts = getPosts();
+    dump($posts);
 
 } catch (Exception $e) {
+    $errorId = 'ERR_' . date('Ymd_His') . '_' . uniqid();
 
-    http_response_code(500);
-    $error = "Ошибка сервера: " . $e->getMessage();
+    $errorDetails = [
+        'message' => $e->getMessage(),
+        'errorId' => $errorId,
+        'line' => $e->getLine(),
+        'trace' => $e->getTraceAsString()
+    ];
+    error_log(json_encode($errorDetails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    //Редирект
+    redirectToError(500, $e->getMessage(), $errorId);
 
 }
 
@@ -22,6 +39,7 @@ try {
 </head>
 <body>
 <?php include __DIR__ . '/components/menu.php' ?>
+<a href="/create-post.php"> <button>Создать пост</button></a>
 <h2>Посты</h2>
 <?php if (!isset($error)): ?>
     <?php foreach ($posts as $post): ?>

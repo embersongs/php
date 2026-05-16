@@ -8,8 +8,15 @@ try {
 
 } catch (Exception $e) {
 
-    http_response_code(500);
-    $error = "Ошибка сервера: " . $e->getMessage();
+    $errorDetails = [
+        'message' => $e->getMessage(),
+        'line' => $e->getLine(),
+        'trace' => $e->getTraceAsString()
+    ];
+    error_log(json_encode($errorDetails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    //Редирект
+    redirectToError(500);
 
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__ . '/functions/app.php';
 
 try {
@@ -17,19 +18,33 @@ try {
     $post = getPost($id);
 
 
+
 } catch (OutOfBoundsException $e) {
 
    // http_response_code(404);
    // $error = "404 пост не найден. " . $e->getMessage();
 
+    $errorId = 'ERR_' . date('Ymd_His') . '_' . uniqid();
+
+    $errorDetails = [
+        'message' => $e->getMessage(),
+        'errorId' => $errorId,
+        'line' => $e->getLine(),
+        'trace' => $e->getTraceAsString()
+    ];
+    error_log(json_encode($errorDetails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
     //Редирект
-    header("Location: 404.php?error=???");
-    die();
+    redirectToError(404, $e->getMessage(), $errorId);
 
 } catch (Exception $e) {
-
-    http_response_code(500);
-    $error = "Ошибка сервера: " . $e->getMessage();
+    $errorDetails = [
+        'message' => $e->getMessage(),
+        'line' => $e->getLine(),
+        'trace' => $e->getTraceAsString()
+    ];
+    error_log(json_encode($errorDetails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    redirectToError(500);
 }
 
 ?>
