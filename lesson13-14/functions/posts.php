@@ -2,6 +2,10 @@
 
 namespace CompanyName\Blog;
 
+function savePost(array $post)
+{
+    //сохранить пост в json
+}
 
 function getPost(int $id): array
 {
@@ -39,3 +43,4 @@ function getPostsCategoriesById(int $id): array
 
     return array_values($filteredPosts);
 }
+

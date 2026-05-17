@@ -1,6 +1,16 @@
 <?php
 
-require __DIR__ . '/functions/app.php';
+require __DIR__.'/vendor/autoload.php';
+
+use function CompanyName\Blog\getPost;
+use function CompanyName\Blog\redirectToError;
+
+const STATUSES = [
+    'ok' => 'Пост успешно создан',
+    'edit' => 'Пост успешно изменен',
+    'info' => 'Поздравляю',
+];
+$success = STATUSES[($_GET['success'] ?? null)] ?? null;
 
 try {
     $id = $_GET['id'] ?? null;
@@ -58,7 +68,9 @@ try {
 <body>
 <?php include __DIR__ . '/components/menu.php' ?>
 <h2>Пост</h2>
-
+<?php if (!empty($success)): ?>
+    <p style="color:green"><?=$success?></p>
+<?php endif; ?>
 <?php if (!isset($error)): ?>
     <div>
         <h3><?= htmlspecialchars($post['title']) ?></h3>

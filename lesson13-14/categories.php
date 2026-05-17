@@ -1,6 +1,9 @@
 <?php
 
-require __DIR__ . '/functions/app.php';
+require __DIR__.'/vendor/autoload.php';
+
+use function CompanyName\Blog\getCategories;
+use function CompanyName\Blog\redirectToError;
 
 try {
 

@@ -1,6 +1,10 @@
 <?php
 
-require __DIR__ . '/functions/app.php';
+require __DIR__.'/vendor/autoload.php';
+
+use function CompanyName\Blog\getCategoryBySlug;
+use function CompanyName\Blog\getPostsCategoriesBySlug;
+use function CompanyName\Blog\redirectToError;
 
 $slug = $_GET['category'] ?? null;
 
