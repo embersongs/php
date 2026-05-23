@@ -2,9 +2,20 @@
 
 namespace CompanyName\Blog;
 
-function savePost(array $post)
+function updatePost(array $post):void
 {
-    //сохранить пост в json
+    $id = $post['id'];
+    $posts = getPosts();
+
+
+    $posts[$id] = [...$post, ...[
+        'date' => $posts[$id]['date'],
+        'author' => $posts[$id]['author']
+    ]];
+
+    if (!file_put_contents(dirname(__DIR__) . '/data/posts.json', json_encode($posts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT))) {
+        throw new \Exception("Не удалось сохранить данные");
+    }
 }
 
 function getPost(int $id): array

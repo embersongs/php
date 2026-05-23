@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'category_id' => $category_id,
             'title' => $title,
             'content' => $content,
-            'date' => '',
-            'author' => ''
+            'date' => date('Y-m-d H:i'),
+            'author' => 'Guest'
 
         ];
 

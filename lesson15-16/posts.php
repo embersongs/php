@@ -10,7 +10,7 @@ use function CompanyName\Blog\redirectToError;
 const STATUSES = [
     'ok' => 'Пост успешно удален',
 ];
-$success = STATUSES[($_GET['success'] ?? null)] ?? null;
+$success = isset($_GET['success']) ? (STATUSES[$_GET['success']] ?? null) : null;
 
 try {
 

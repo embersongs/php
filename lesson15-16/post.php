@@ -10,7 +10,7 @@ const STATUSES = [
     'edit' => 'Пост успешно изменен',
     'info' => 'Поздравляю',
 ];
-$success = STATUSES[($_GET['success'] ?? null)] ?? null;
+$success = isset($_GET['success']) ? (STATUSES[$_GET['success']] ?? null) : null;
 
 try {
     $id = $_GET['id'] ?? null;
