@@ -22,6 +22,23 @@ try {
         //deletePost($id)
         unset($posts[$id]);
         file_put_contents(__DIR__ . '/data/posts.json', json_encode($posts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
+        if (isset($_GET['ajax'])) {
+            if (empty($errors)) {
+                $result = [
+                    'status' => 'success'
+                ];
+            } else {
+                $result = [
+                    'status' => 'error'
+                ];
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            exit;
+        }
+
         header("Location: /posts.php?success=ok");
         die();
     }
@@ -43,6 +60,8 @@ try {
 
 }
 
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -61,7 +80,7 @@ try {
 
 <?php if (!isset($error)): ?>
     <?php foreach ($posts as $post): ?>
-        <div>
+        <div id="<?=$post['id']?>">
             <h3>
                 <a href="/post.php?id=<?= $post['id'] ?>">
                     <?= htmlspecialchars($post['title']) ?>
@@ -70,6 +89,7 @@ try {
                 <a href="/post-edit.php?action=edit&id=<?=$post['id']?>">[edit]</a>
                 &nbsp;&nbsp;&nbsp;
                 <a href="/posts.php?action=delete&id=<?=$post['id']?>">[X]</a>
+                <button data-id="<?=$post['id']?>" type="button" class="deleteBtn" style="width: 50px;height: 30px; cursor:pointer">[x]</button>
             </h3>
             <p><?= htmlspecialchars($post['date']) ?></p>
             <p><?= htmlspecialchars($post['author']) ?></p>
@@ -78,5 +98,38 @@ try {
 <?php else: ?>
     <?= htmlspecialchars($error) ?>
 <?php endif; ?>
+<script>
+    window.onload = function () {
+        document.querySelectorAll('.deleteBtn').forEach(button => {
+            button.onclick = function () {
+                const id = this.getAttribute('data-id');
+
+                //сделать запрос ?action=delete&id=3
+                (
+                    async () => {
+                        try {
+                            const response = await fetch(`?action=delete&id=${id}&ajax`);
+                            const result = await response.json();
+                            switch (result.status) {
+                                case 'success':
+                                    document.getElementById(id).remove();
+                                    break;
+                                case 'error':
+                                    console.error('Ошибка: не могу удалить');
+                                    break;
+                                default:
+                                    console.error('Ошибка: не верный формат ответа');
+                            }
+
+                        } catch (error) {
+                            console.error('Ошибка:', error);
+                        }
+                    }
+                )();
+            }
+        });
+
+    }
+</script>
 </body>
 </html>
