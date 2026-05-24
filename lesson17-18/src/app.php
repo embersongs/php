@@ -2,6 +2,33 @@
 
 namespace CompanyName\Blog;
 
+function render(string $page, $params = []): string
+{
+    return renderTemplate('layouts/main', [
+        'menu' => renderTemplate('components/menu', $params),
+        'content' => renderTemplate($page, $params),
+        'titleSite' => $params['titleSite'] ?? 'Главная',
+    ]);
+}
+
+function renderTemplate(string $page, $params = []): string
+{
+    extract($params, EXTR_SKIP);
+
+    $fileName = dirname(__DIR__) . '/templates/' . $page . '.php';
+
+    ob_start();
+
+    if (file_exists($fileName)) {
+        include $fileName;
+    } else {
+        throw new \OutOfBoundsException("Страницы {$page} не существует.");
+    }
+
+    return ob_get_clean();
+
+}
+
 function redirectToError($code, $message = null, $errorId = null): never
 {
     $params = ['code' => $code];
@@ -15,7 +42,7 @@ function redirectToError($code, $message = null, $errorId = null): never
     }
 
     $queryString = http_build_query($params);
-    header("Location: error-handler.php?{$queryString}");
+    header("Location: ?page=error-handler&{$queryString}");
     exit();
 }
 
