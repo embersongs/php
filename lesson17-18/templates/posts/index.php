@@ -1,4 +1,4 @@
-<a href="/?page=post-create"> <button>Создать пост</button></a>
+<a href="/?page=postcreate"> <button>Создать пост</button></a>
 <h2>Посты</h2>
 <?php if (!empty($success)): ?>
     <p style="color:green"><?=$success?></p>
@@ -12,7 +12,7 @@
                     <?= htmlspecialchars($post['title']) ?>
                 </a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="/?page=post-edit&action=edit&id=<?=$post['id']?>">[edit]</a>
+                <a href="/?page=postedit&action=edit&id=<?=$post['id']?>">[edit]</a>
                 &nbsp;&nbsp;&nbsp;
                 <a href="/?page=posts&action=delete&id=<?=$post['id']?>">[X]</a>
                 <button data-id="<?=$post['id']?>" type="button" class="deleteBtn" style="width: 50px;height: 30px; cursor:pointer">[x]</button>

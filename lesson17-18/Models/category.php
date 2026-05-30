@@ -1,6 +1,8 @@
 <?php
-namespace CompanyName\Blog;
+namespace CompanyName\Blog\Models;
 
+use function  CompanyName\Blog\readFileData;
+use function CompanyName\Blog\decodeData;
 
 function getCategoryBySlug(string $slug): array
 {

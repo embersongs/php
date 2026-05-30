@@ -3,8 +3,11 @@
     "autoload": {
         "files": [
           "src/app.php",
-          "src/categories.php",
-          "src/posts.php"
+          "Models/category.php",
+          "Models/post.php",
+          "Controllers/indexController.php",
+          "Controllers/postControllers.php",
+          "Controllers/categoryController.php"
         ]
     },
     "require-dev": {

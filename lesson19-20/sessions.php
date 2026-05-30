@@ -1,3 +1,12 @@
 <?php
+//Старт сессии
+session_start();
 
-echo PHP_VERSION;
+//Запись в сессию данных (любых)
+$_SESSION['message'] = "Файл удален";
+
+unset($_SESSION['message']); //Удаление
+session_destroy();
+var_dump(session_id());
+var_dump($_SESSION);
+var_dump($_COOKIE);

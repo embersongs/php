@@ -1,8 +1,11 @@
 <?php
 
-namespace CompanyName\Blog;
+namespace CompanyName\Blog\Models;
 
-function updatePost(array $post):void
+use function  CompanyName\Blog\readFileData;
+use function CompanyName\Blog\decodeData;
+
+function updatePost(array $post): void
 {
     $id = $post['id'];
     $posts = getPosts();
@@ -10,7 +13,8 @@ function updatePost(array $post):void
 
     $posts[$id] = [...$post, ...[
         'date' => $posts[$id]['date'],
-        'author' => $posts[$id]['author']
+        'author' => $posts[$id]['author'],
+        'likes' => $post['likes'],
     ]];
 
     if (!file_put_contents(dirname(__DIR__) . '/data/posts.json', json_encode($posts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT))) {
