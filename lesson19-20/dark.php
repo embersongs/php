@@ -20,8 +20,8 @@ $current_theme = $_COOKIE["user_theme"] ?? 'light';
 <body style="background-color: <?= $current_theme === 'dark' ? 'grey' : 'white' ?>">
 
 <form action="" method="post">
-    <label style="cursor: pointer">
-        <input type="checkbox" name="theme_checkbox" onclick="this.form.submit()" <?= $current_theme === 'dark' ? 'checked' : '' ?>>
+    <label style="cursor: pointer" for="check">
+        <input id="check" type="checkbox" name="theme_checkbox" onclick="this.form.submit()" <?= $current_theme === 'dark' ? 'checked' : '' ?>>
         Темная тема
     </label>
 

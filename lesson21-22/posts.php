@@ -12,7 +12,7 @@ require __DIR__ . '/auth.php'; //аутентификация
 <?php if ($isAdmin):?>
 Добро пожаловать Админ <a href="?action=logout">Выход</a><br>
 <?php else:?>
-<form action=?action=login" method="post">
+<form action="?action=login" method="post">
     <input type="text" name="login">
     <input type="text" name="password">
     <input type="checkbox" name="save"> Запомнить?

@@ -9,6 +9,9 @@ use function CompanyName\Blog\Models\getPostsCategoriesBySlug;
 
 function postsCategoryController(): void
 {
+    //авторизация
+    auth();
+
     $slug = $_GET['category'] ?? null;
 
     if (is_null($slug)) {
@@ -21,6 +24,7 @@ function postsCategoryController(): void
     echo render('posts/posts-category', [
         'posts' => $posts,
         'category' => $category,
+        'isAdmin' => true
     ]);
 }
 

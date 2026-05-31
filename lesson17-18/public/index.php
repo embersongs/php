@@ -16,6 +16,8 @@ $page = (string)($_GET['page'] ?? 'index');
 
 $controllerFunctionName = "CompanyName\\Blog\\Controllers\\" . $page . "Controller";
 
+
+
 try {
     if (function_exists($controllerFunctionName)) {
         $controllerFunctionName();
