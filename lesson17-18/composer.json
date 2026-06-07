@@ -2,6 +2,7 @@
     "name": "ember/lesson11-12",
     "autoload": {
         "files": [
+          "src/db.php",
           "src/app.php",
           "Models/category.php",
           "Models/post.php",
@@ -14,6 +15,7 @@
         "symfony/var-dumper": "^8.0"
     },
   "require": {
-    "ext-fileinfo": "*"
+    "ext-fileinfo": "*",
+    "ext-pdo": "*"
   }
 }

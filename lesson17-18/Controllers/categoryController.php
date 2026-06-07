@@ -10,7 +10,7 @@ use function CompanyName\Blog\Models\getPostsCategoriesBySlug;
 function postsCategoryController(): void
 {
     //авторизация
-    auth();
+  //  auth();
 
     $slug = $_GET['category'] ?? null;
 

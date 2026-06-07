@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS "categories"
 (
     "id"   INTEGER NOT NULL,
     "name" VARCHAR NOT NULL UNIQUE,
+    "slug" VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY ("id")
 );
 
@@ -15,11 +16,10 @@ CREATE TABLE IF NOT EXISTS "posts"
     PRIMARY KEY ("id")
 );
 
-
 --seeding заполнение данными таблиц
-INSERT INTO categories (id, name) VALUES (1, 'Политика');
-INSERT INTO categories (id, name) VALUES (2, 'Спорт');
-INSERT INTO categories (id, name) VALUES (3, 'Еда');
+INSERT INTO categories (id, name, slug) VALUES (1, 'Политика', 'politics');
+INSERT INTO categories (id, name, slug) VALUES (2, 'Спорт', 'sport');
+INSERT INTO categories (id, name, slug) VALUES (3, 'Еда', 'food');
 
 INSERT INTO posts (title, content, category_id) VALUES ('Пост 1', 'Пост о политике', 1);
 INSERT INTO posts (title, content, category_id) VALUES ('Пост 2', 'Еще Пост о политике', 1);

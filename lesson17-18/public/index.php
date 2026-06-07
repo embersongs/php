@@ -61,5 +61,7 @@ try {
         'trace' => $e->getTraceAsString()
     ];
     error_log(json_encode($errorDetails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    var_dump($errorDetails);
+    die();
     redirectToError(500);
 }

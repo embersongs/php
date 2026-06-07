@@ -1,6 +1,7 @@
 <?php
 namespace CompanyName\Blog\Models;
 
+use function CompanyName\Blog\getDb;
 use function  CompanyName\Blog\readFileData;
 use function CompanyName\Blog\decodeData;
 
@@ -29,7 +30,11 @@ function getCategoryById(int $id): array
 
 function getCategories()
 {
-    $categoriesData = readFileData('categories.json');
-    return decodeData($categoriesData);
+    $db = getDb();
+    $stmt = $db->query("SELECT * FROM categories");
+   // $categoriesData = readFileData('categories.json');
+    $categories = $stmt->fetchAll();
+    var_dump($categories);
+    return $categories;
 }
 
