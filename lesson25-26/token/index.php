@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/db.php'; //Функции работы с БД
 require __DIR__ . '/auth.php';
 
 ?>
