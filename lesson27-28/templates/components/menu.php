@@ -1,6 +1,6 @@
 <nav>
     <a href="/">Главная</a>
-    <a href="/?page=posts">Посты</a>
-    <a href="/?page=categories">Категории</a>
-    <a href="/?page=calculator">Калькулятор</a>
+    <a href="/posts">Посты</a>
+    <a href="/categories">Категории</a>
+    <a href="/calculator">Калькулятор</a>
 </nav>

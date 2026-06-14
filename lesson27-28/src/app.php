@@ -42,7 +42,7 @@ function redirectToError($code, $message = null, $errorId = null): never
     }
 
     $queryString = http_build_query($params);
-    header("Location: ?page=errorhandler&{$queryString}");
+    header("Location: /errorhandler/?{$queryString}");
     exit();
 }
 

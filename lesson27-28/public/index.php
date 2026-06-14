@@ -11,16 +11,31 @@ const STATUSES = [
     'info' => 'Поздравляю',
 ];
 
+//Фронт контроллер
+$url_array = explode('/', trim($_SERVER['REQUEST_URI'] ?? '/', '/'));
+$page = $url_array[0] ?: 'index';
 
-$page = (string)($_GET['page'] ?? 'index');
+if (isset($url_array[1])) {
+    if (is_numeric($url_array[1])) {
+        $id = (int)$url_array[1];
+        $action = 'index';
+    } else {
+        $action = $url_array[1];
+        $id = isset($url_array[2]) && is_numeric($url_array[2]) ? (int)$url_array[2] : null;
+    }
+} else {
+    $action = 'index';
+    $id = null;
+}
+
+//$page = (string)($_GET['page'] ?? 'index');
 
 $controllerFunctionName = "CompanyName\\Blog\\Controllers\\" . $page . "Controller";
 
 
-
 try {
     if (function_exists($controllerFunctionName)) {
-        $controllerFunctionName();
+        $controllerFunctionName($action, $id);
     } else {
         throw new OutOfBoundsException("Нет такого контроллера страницы");
     }
@@ -61,7 +76,6 @@ try {
         'trace' => $e->getTraceAsString()
     ];
     error_log(json_encode($errorDetails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    var_dump($errorDetails);
-    die();
+
     redirectToError(500);
 }

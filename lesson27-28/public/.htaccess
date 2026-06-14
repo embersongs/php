@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Если файл или папка существуют - отдаем их
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Все остальное перенаправляем на index.php
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
+
+# Защита файлов
+<FilesMatch "\.(sqlite|db|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

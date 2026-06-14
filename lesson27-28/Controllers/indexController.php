@@ -4,12 +4,12 @@ namespace CompanyName\Blog\Controllers;
 use function CompanyName\Blog\render;
 use function CompanyName\Blog\renderTemplate;
 
-function indexController(): void
+function indexController($action = null, $id = null): void
 {
     echo render('index');
 }
 
-function errorHandlerController(): void
+function errorHandlerController($action = null, $id = null): void
 {
     $errorConfig = [
         404 => [

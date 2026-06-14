@@ -17,7 +17,7 @@ WHERE id = 1;
 DELETE FROM posts WHERE id = 1;
 
 -- Общее количество постов
-SELECT COUNT(*) AS total_posts FROM posts;
+SELECT COUNT(id) AS total_posts FROM posts;
 
 -- Количество постов с лайками > 100
 SELECT COUNT(*) AS popular_posts FROM posts WHERE likes > 100;

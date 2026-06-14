@@ -8,7 +8,7 @@ use function CompanyName\Blog\render;
 use function CompanyName\Blog\Models\updatePost;
 use function CompanyName\Blog\Models\getCategories;
 
-function postEditController(): void
+function postEditController($action = null, $id = null): void
 {
 
     $category_id = null;
@@ -79,7 +79,7 @@ function postEditController(): void
     ]);
 }
 
-function postCreateController(): void
+function postCreateController($action = null, $id = null): void
 {
 
     $categories = getCategories();
@@ -174,7 +174,7 @@ function postCreateController(): void
     ]);
 }
 
-function postController(): void
+function postController($action = null, $id = null): void
 {
     $success = isset($_GET['success']) ? (STATUSES[$_GET['success']] ?? null) : null;
 
@@ -220,9 +220,9 @@ function postController(): void
 
 }
 
-function postsController(): void
+function postsController($action = null, $id = null): void
 {
-
+dd($action);
     $success = isset($_GET['success']) ? (STATUSES[$_GET['success']] ?? null) : null;
 
     $posts = getPosts();
