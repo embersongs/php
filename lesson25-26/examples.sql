@@ -1,3 +1,40 @@
+-- Добавление новой записи
+INSERT INTO posts (title, content, likes)
+VALUES ('Мой первый пост', 'Текст содержимого...', 0);
+
+-- Получение всех постов
+SELECT * FROM posts;
+
+-- Получение одного поста по id
+SELECT * FROM posts WHERE id = 1;
+
+-- Обновление заголовка и содержимого
+UPDATE posts
+SET title = 'Новый заголовок', content = 'Обновленный текст'
+WHERE id = 1;
+
+-- Удаление поста по id
+DELETE FROM posts WHERE id = 1;
+
+-- Общее количество постов
+SELECT COUNT(*) AS total_posts FROM posts;
+
+-- Количество постов с лайками > 100
+SELECT COUNT(*) AS popular_posts FROM posts WHERE likes > 100;
+
+-- Общее количество лайков всех постов
+SELECT SUM(likes) AS total_views FROM posts;
+
+-- Среднее количество лайков на пост
+SELECT AVG(likes) AS avg_views FROM posts;
+
+-- Самый популярный и наименее популярный пост
+SELECT
+    MAX(likes) AS max_views,
+    MIN(likes) AS min_views
+FROM posts;
+
+
 --Количество постов в каждой категории
 SELECT
     c.name category_name,
