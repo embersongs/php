@@ -1,6 +1,8 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/app.php';
+$routes = require __DIR__ . '/../config/routes.php';
 
 use function CompanyName\Blog\redirectToError;
 
@@ -31,11 +33,12 @@ if (isset($url_array[1])) {
 //$page = (string)($_GET['page'] ?? 'index');
 
 $controllerFunctionName = "CompanyName\\Blog\\Controllers\\" . $page . "Controller";
+//$controllerFunctionName = "CompanyName\\Blog\\Controllers\\" . $page . ucfirst($action) . "Controller";
 
 
 try {
     if (function_exists($controllerFunctionName)) {
-        $controllerFunctionName($action, $id);
+        $controllerFunctionName($action, $id); //postSaveController
     } else {
         throw new OutOfBoundsException("Нет такого контроллера страницы");
     }
@@ -67,7 +70,12 @@ try {
     }
 
     //Редирект
-    redirectToError(404, $e->getMessage(), $errorId);
+    if (DEBUG === true) {
+        var_dump($errorDetails);
+    } else {
+        redirectToError(404, $e->getMessage(), $errorId);
+    }
+
 
 } catch (Exception $e) {
     $errorDetails = [

@@ -1,36 +1,12 @@
 {
-    "6": {
-        "id": 6,
-        "category_id": 2,
-        "title": "Чистая архитектура в Go",
-        "content": "Реализация слоев: сущности, use cases, репозитории и контроллеры на примере REST API.",
-        "date": "2024-02-28",
-        "author": "Сергей",
-        "likes": 2
-    },
-    "7": {
-        "id": "7",
-        "category_id": 2,
-        "title": "Node.js: обработка ошибок в асинхронных функциях",
-        "content": "Трюки с try\/catch, доменные ошибки и глобальные обработчики для надежного кода.",
-        "date": "2024-03-15",
-        "author": "Алина"
-    },
-    "8": {
-        "id": "8",
-        "category_id": 2,
-        "title": "REST против GraphQL: реальное сравнение",
-        "content": "Плюсы и минусы подходов на проектах средней и высокой нагрузки.",
-        "date": "2024-04-01",
-        "author": "Роман"
-    },
     "9": {
-        "id": "9",
+        "id": 9,
         "category_id": 3,
         "title": "Docker Compose для локального окружения",
         "content": "Как поднять бэкенд, базу, кэш и очередь за 5 минут — готовый docker-compose.yml.",
         "date": "2024-01-25",
-        "author": "Игорь"
+        "author": "Игорь",
+        "likes": null
     },
     "10": {
         "id": "10",
@@ -104,65 +80,6 @@
         "date": "2024-02-14",
         "author": "Никита"
     },
-    "19": {
-        "id": 19,
-        "category_id": 1,
-        "title": "aaa",
-        "content": "dsffd",
-        "date": "2026-05-24 09:14",
-        "author": "Guest"
-    },
-    "20": {
-        "id": 20,
-        "category_id": 1,
-        "title": "gfh",
-        "content": "fgh",
-        "date": "2026-05-24 10:09",
-        "author": "Guest"
-    },
-    "21": {
-        "id": 21,
-        "category_id": 1,
-        "title": "gfh",
-        "content": "fgh",
-        "date": "2026-05-24 10:10",
-        "author": "Guest"
-    },
-    "22": {
-        "id": 22,
-        "category_id": 1,
-        "title": "sdf",
-        "content": "sdf",
-        "date": "2026-05-24 10:16",
-        "author": "Guest"
-    },
-    "23": {
-        "id": 23,
-        "category_id": 1,
-        "title": "sdf",
-        "content": "sdf",
-        "date": "2026-05-24 10:17",
-        "author": "Guest"
-    },
-    "24": {
-        "id": 24,
-        "category_id": 1,
-        "title": "sdf",
-        "content": "sdf",
-        "date": "2026-05-24 10:18",
-        "author": "Guest",
-        "image": "6a12d06e603b9_2026-05-24_10-18-22.png",
-        "likes": 1
-    },
-    "25": {
-        "id": 25,
-        "category_id": 1,
-        "title": "dfgdf",
-        "content": "dfgdf",
-        "date": "2026-05-24 10:22",
-        "author": "Guest",
-        "image": null
-    },
     "26": {
         "id": 26,
         "category_id": 1,
@@ -172,24 +89,6 @@
         "author": "Guest",
         "image": null
     },
-    "27": {
-        "id": 27,
-        "category_id": 1,
-        "title": "dfgdf",
-        "content": "dfgdf",
-        "date": "2026-05-24 10:24",
-        "author": "Guest",
-        "image": null
-    },
-    "28": {
-        "id": 28,
-        "category_id": 1,
-        "title": "sdfsdf",
-        "content": "s dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd fs dfsd fsd sd sd fsd fs df sd f",
-        "date": "2026-05-24 10:26",
-        "author": "Guest",
-        "image": "6a12d260b027c_2026-05-24_10-26-40.jpg"
-    },
     "29": {
         "id": 29,
         "category_id": 1,
@@ -198,5 +97,42 @@
         "date": "2026-05-30 18:20",
         "author": "Guest",
         "image": "6a1b2a58bb5df_2026-05-30_18-20-08.jpg"
+    },
+    "30": {
+        "id": 30,
+        "category_id": 1,
+        "title": "111",
+        "content": "111",
+        "date": "2026-06-14 06:07",
+        "author": "Guest",
+        "image": null
+    },
+    "31": {
+        "id": 31,
+        "category_id": 1,
+        "title": "111",
+        "content": "111",
+        "date": "2026-06-14 06:08",
+        "author": "Guest",
+        "image": null
+    },
+    "32": {
+        "id": 32,
+        "category_id": 1,
+        "title": "22",
+        "content": "222",
+        "date": "2026-06-14 08:58",
+        "author": "Guest",
+        "image": null
+    },
+    "33": {
+        "id": 33,
+        "category_id": 1,
+        "title": "rrrr",
+        "content": "rrrr",
+        "date": "2026-06-14 09:40",
+        "author": "Guest",
+        "image": null,
+        "likes": 1
     }
 }

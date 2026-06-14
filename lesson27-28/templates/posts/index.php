@@ -14,7 +14,7 @@
                 &nbsp;&nbsp;&nbsp;
                 <a href="/post/edit/<?=$post['id']?>">[edit]</a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="/posts/delete/<?=$post['id']?>">[X]</a>
+                <a href="/post/delete/<?=$post['id']?>">[X]</a>
                 <button data-id="<?=$post['id']?>" type="button" class="deleteBtn" style="width: 50px;height: 30px; cursor:pointer">[x]</button>
             </h3>
             <p><?= htmlspecialchars($post['date']) ?></p>
@@ -34,7 +34,7 @@
                 (
                     async () => {
                         try {
-                            const response = await fetch(`/posts/delete/${id}/?ajax`);
+                            const response = await fetch(`/post/delete/${id}/?ajax`);
                             const result = await response.json();
                             switch (result.status) {
                                 case 'success':

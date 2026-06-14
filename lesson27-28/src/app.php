@@ -13,6 +13,7 @@ function render(string $page, $params = []): string
 
 function renderTemplate(string $page, $params = []): string
 {
+
     extract($params, EXTR_SKIP);
 
     $fileName = dirname(__DIR__) . '/templates/' . $page . '.php';
