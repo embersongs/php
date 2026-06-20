@@ -3,7 +3,7 @@ define("ROOT_PATH", dirname(__DIR__));
 const DB_PATH = ROOT_PATH . '/data/database.db';
 const DEBUG = true;
 const SITE_URL = 'http://localhost:8080';
-const UPLOAD_PATH = ROOT_PATH . '/upload';
+const UPLOAD_PATH = ROOT_PATH . '/public/upload/';
 const ERRORS = [
     404 => [
         'title' => 'Страница не найдена',

@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/app.php';
-$routes = require __DIR__ . '/../config/routes.php';
+//$routes = require __DIR__ . '/../config/routes.php';
 
 use function CompanyName\Blog\redirectToError;
 

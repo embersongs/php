@@ -193,7 +193,8 @@ function postsController($action = null, $id = null): void
                 if ($_FILES['image']['size'] > $maxFileSize) {
                     $errors['image'] = 'Файл слишком большой';
                 }
-                $uploadDir = 'upload/';
+                $uploadDir =  UPLOAD_PATH;
+
                 $fileName = $_FILES['image']['name'];
                 $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
@@ -209,6 +210,7 @@ function postsController($action = null, $id = null): void
                     $errors['image'] = 'Не правильный тип файла';
                 }
                 $safeFileName = uniqid() . '_' . date('Y-m-d_H-i-s') . '.' . $fileExtension;
+
 
                 if (!isset($errors['image'])) {
                     if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $safeFileName)) {

@@ -33,8 +33,6 @@ function getCategories()
     $db = getDb();
     $stmt = $db->query("SELECT * FROM categories");
    // $categoriesData = readFileData('categories.json');
-    $categories = $stmt->fetchAll();
-
-    return $categories;
+    return $stmt->fetchAll();
 }
 
