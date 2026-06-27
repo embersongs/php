@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Models\Category;
 use App\Traits\TSingletone;
 use PDO;
 use PDOStatement;
@@ -15,7 +16,7 @@ class Db
     private function getPDO(): PDO
     {
         if (is_null($this->pdo)) {
-            $this->pdo = new PDO('sqlite:database.db');
+            $this->pdo = new PDO('sqlite:../database.db');
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
@@ -50,10 +51,10 @@ class Db
         return static::getPDO()->lastInsertId();
     }
 
-    public function fetchObject(string $sql, array $params,string $class): object
+    public function fetchObject(string $sql, array $params,string $class): object | bool
     {
         $stmt = $this->query($sql, $params);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $class);
         return $stmt->fetch();
     }
 }

@@ -2,6 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/app.php';
+
 //$routes = require __DIR__ . '/../config/routes.php';
 
 use function CompanyName\Blog\redirectToError;
@@ -29,6 +30,7 @@ if (isset($url_array[1])) {
     $action = 'index';
     $id = null;
 }
+
 
 //$page = (string)($_GET['page'] ?? 'index');
 
