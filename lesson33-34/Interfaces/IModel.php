@@ -4,6 +4,6 @@ namespace App\Interfaces;
 
 interface IModel
 {
-    public function All();
-    public function find(int $id);
+    public static function All();
+    public static function find(int $id);
 }

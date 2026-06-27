@@ -9,7 +9,7 @@ class User extends Model
     public string $name;
     public string $email;
 
-    protected function getTableName(): string
+    protected static function getTableName(): string
     {
         return 'users';
     }

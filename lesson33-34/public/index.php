@@ -8,15 +8,13 @@ use App\Models\User;
 require_once __DIR__ . "/../vendor/autoload.php";
 //spl_autoload_register('loader');
 
-$db = new Db();
-$post = new Post();
-$user = new User();
+
+$post = Post::find(2);
+$category = Post::find(1);
+dump($category);
+dump(get_class_methods($category));
 
 
-
-echo $post->all() . PHP_EOL;
-echo $user->find(5) . PHP_EOL;
-$post->test();
 
 
 

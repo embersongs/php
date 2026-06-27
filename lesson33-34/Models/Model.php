@@ -2,27 +2,43 @@
 
 namespace App\Models;
 
+use App\Core\Db;
 use App\Interfaces\IModel;
-//TODO подключить Db
 
 abstract class Model implements IModel
 {
-    abstract protected function getTableName(): string;
+
+    abstract static protected function getTableName(): string;
 
     //where(name, value)
 
-    public function find(int $id)
+    public static function find(int $id)
     {
-        $tableName = $this->getTableName();
-        $sql = "SELECT * FROM $tableName WHERE id = {$id}";
+        $tableName = static::getTableName();
+        $sql = "SELECT * FROM $tableName WHERE id = :id";
         //TODO Вызвать query и передать запрос на выполнение
-        return $sql;
+        return Db::getInstance()->fetchObject($sql, ['id' => $id], static::class);
     }
 
-    public function all()
+    public static function all()
     {
-        $tableName = $this->getTableName();
+        $tableName = static::getTableName();
         $sql = "SELECT * FROM $tableName";
-        return $sql;
+        return Db::getInstance()->fetchAll($sql);
+    }
+
+    public function insert()
+    {
+
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destroy()
+    {
+
     }
 }
