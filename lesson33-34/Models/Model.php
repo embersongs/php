@@ -10,14 +10,23 @@ abstract class Model implements IModel
     public function __set($name, $value)
     {
         //TODO разрешать менять только те поля что есть в fillable
-        $this->fillable[$name] = true;
-        $this->$name = $value;
+        if (array_key_exists($name, $this->fillable)) {
+            $this->fillable[$name] = true;
+            $this->$name = $value;
+        } else {
+            throw new \InvalidArgumentException("Property '{$name}' is not fillable");
+        }
+
     }
 
     public function __get($name)
     {
         //TODO Разрешать читать только те поля, которые есть в fillable и id
-        return $this->$name;
+        if ($name === 'id' || array_key_exists($name, $this->fillable)) {
+            return $this->$name;
+        }
+
+        throw new \InvalidArgumentException("Property '{$name}' is not readable");
     }
 
     abstract static protected function getTableName(): string;
