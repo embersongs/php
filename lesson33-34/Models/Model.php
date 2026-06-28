@@ -98,5 +98,10 @@ abstract class Model implements IModel
     public function save()
     {
         //TODO вызовите или insert или update
+        if (is_null($this->id)) {
+            return $this->insert();
+        } else {
+            return $this->update();
+        }
     }
 }

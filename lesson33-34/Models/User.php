@@ -9,6 +9,11 @@ class User extends Model
     public string $name;
     public string $email;
 
+    protected array $fillable = [
+        'name' => false,
+        'email' => false
+    ];
+
     protected static function getTableName(): string
     {
         return 'users';
