@@ -1,25 +1,23 @@
 <?php
 
-
-use App\Core\Render;
-use App\Core\Request;
+use App\Controllers\IndexController;
+use App\Controllers\PostController;
+use App\Core\Router;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
 
-$request = new Request();
+$router = new Router();
 
-$controllerName = $request->getControllerName() ?: 'index';
-$actionName = $request->getActionName();
+$router->addRoute('GET', '/', [IndexController::class, 'index']);
+$router->addRoute('GET', '/posts', [PostController::class, 'index']);
+$router->addRoute('GET', '/posts/{id}', [PostController::class, 'show']);
+$router->addRoute('GET', '/posts/{id}/edit/{name}', [PostController::class, 'edit']);
 
-$controllerClass = "App\\Controllers\\" . $controllerName . "Controller";
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
 
-if (class_exists($controllerClass)) {
-    $controller = new $controllerClass(new Render());
-    $controller->runAction($actionName);
-} else {
-    die("Нет такого контроллера");
-}
+$router->route($method, $uri);
 
 
 

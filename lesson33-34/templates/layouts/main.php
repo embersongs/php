@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        body {
+            background: silver;
+        }
+    </style>
 </head>
 <body>
 <?=$menu?>

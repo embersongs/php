@@ -16,6 +16,7 @@ class Db
     private function getPDO(): PDO
     {
         if (is_null($this->pdo)) {
+            //TODO Сделать абсолютный путь к БД
             $this->pdo = new PDO('sqlite:../database.db');
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
