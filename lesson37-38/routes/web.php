@@ -23,3 +23,4 @@ Route::get('/posts/{id}', [PostController::class, 'show'])->where('id', '[0-9]+'
 
 Route::get('/admin', AdminController::class)->name('admin.index');
 Route::get('/admin/posts', [AdminPostController::class, 'index'])->name('admin.posts.index');
+//Route::get('/admin/categories', [AdminPostController::class, 'index'])->name('admin.categories.index');

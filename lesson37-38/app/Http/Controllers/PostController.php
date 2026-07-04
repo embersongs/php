@@ -13,6 +13,7 @@ class PostController extends Controller
     {
         //$posts = Post::all(); //читаем из модели
         $posts = DB::table("posts")->orderBy("id", "desc")->get();
+
         return view('posts', ['posts' => $posts]);
     }
 
