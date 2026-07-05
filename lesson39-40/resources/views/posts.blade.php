@@ -12,7 +12,8 @@
     @endforeach
     <br><br>
     @foreach($posts as $post)
+        {{ $post->category->name }}:
         <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a><br>
     @endforeach
-
+    {{ $posts->links('components.minimal') }}
 @endsection

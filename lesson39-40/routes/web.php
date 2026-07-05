@@ -23,8 +23,8 @@ Route::prefix('posts')
     ->controller(PostController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/{id}', 'show')->where('id', '[0-9]+')->name('show');
-        Route::get('/category/{slug}', 'category')->name('category');
+        Route::get('/{post}', 'show')->name('show');
+        Route::get('/category/{category:slug}', 'category')->name('category');
     });
 
 Route::prefix('admin')

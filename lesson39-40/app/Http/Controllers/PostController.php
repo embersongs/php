@@ -17,7 +17,7 @@ class PostController extends Controller
 
        // $categories = DB::table("categories")->orderBy("id", "desc")->get();
         $categories = Category::all();
-        $posts = Post::all();
+        $posts = Post::query()->paginate(10);
 
 
         return view('posts', [
@@ -26,7 +26,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function show(int $id)
+    public function show(Post $post)
     {
         //$posts = Post::all();
        /*if (!isset($posts[$id])) {
@@ -34,27 +34,26 @@ class PostController extends Controller
         }*/
        // $post = $posts[$id];
        // $post = DB::table('posts')->find($id);
-        $post = Post::query()->find($id);
+       // $post = Post::query()->find($id);
 
         return view('post', ['post' => $post]);
     }
 
 
-    public function category(string $slug)
+    public function category(Category $category)
     {
        // $posts = DB::table("posts")->where('category_id', $id)->orderBy("id", "desc")->get();
 
-        $category = Category::query()->where('slug', $slug)->firstOrFail();
+      //  $category = Category::with('posts')->where('slug', $slug)->firstOrFail();
 
-        $posts = $category->posts;
+        $posts = $category->posts()->with('category')->paginate(10);
 
+//dump($posts);
 /*        $posts = Post::query()
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('categories.slug', $slug)
             ->select('posts.*', 'categories.name as category_name')
             ->get();*/
-
-
 
 
 
