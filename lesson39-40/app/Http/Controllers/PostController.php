@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -12,8 +13,11 @@ class PostController extends Controller
     public function index()
     {
         //$posts = Post::all(); //читаем из модели
-        $posts = DB::table("posts")->orderBy("id", "desc")->get();
-        $categories = DB::table("categories")->orderBy("id", "desc")->get();
+        //$posts = DB::table("posts")->orderBy("id", "desc")->get();
+
+       // $categories = DB::table("categories")->orderBy("id", "desc")->get();
+        $categories = Category::all();
+        $posts = Post::all();
 
 
         return view('posts', [
@@ -29,7 +33,8 @@ class PostController extends Controller
             abort(404);
         }*/
        // $post = $posts[$id];
-        $post = DB::table('posts')->find($id);
+       // $post = DB::table('posts')->find($id);
+        $post = Post::query()->find($id);
 
         return view('post', ['post' => $post]);
     }
@@ -39,17 +44,21 @@ class PostController extends Controller
     {
        // $posts = DB::table("posts")->where('category_id', $id)->orderBy("id", "desc")->get();
 
-        $category = DB::table("categories")->where('slug', $slug)->firstOrFail();
+        $category = Category::query()->where('slug', $slug)->firstOrFail();
 
-        $posts = DB::table("posts")
+        $posts = $category->posts;
+
+/*        $posts = Post::query()
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('categories.slug', $slug)
             ->select('posts.*', 'categories.name as category_name')
-            ->get();
+            ->get();*/
 
 
 
-        $categories = DB::table("categories")->orderBy("id", "desc")->get();
+
+
+        $categories = Category::query()->orderBy("id", "desc")->get();
 
 
         return view('posts', [
