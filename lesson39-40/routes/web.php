@@ -18,9 +18,22 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
         Route::get('/{id}', 'show')->where('id', '[0-9]+')->name('show');
     });*/
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{id}', [PostController::class, 'show'])->where('id', '[0-9]+')->name('posts.show');
+Route::prefix('posts')
+    ->name('posts.')
+    ->controller(PostController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{id}', 'show')->where('id', '[0-9]+')->name('show');
+        Route::get('/category/{slug}', 'category')->name('category');
+    });
 
-Route::get('/admin', AdminController::class)->name('admin.index');
-Route::get('/admin/posts', [AdminPostController::class, 'index'])->name('admin.posts.index');
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/', AdminController::class)->name('index');
+        Route::get('/posts', [AdminPostController::class, 'index'])->name('posts.index');
+    });
+
+
+
 //Route::get('/admin/categories', [AdminPostController::class, 'index'])->name('admin.categories.index');

@@ -3,5 +3,7 @@
 @section('content')
     <h2>CRUD постов</h2>
 
-    <p>Вывести список постов с заготовкой кнопок CRUD</p>
+    @foreach($posts as $post)
+        <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a> [edit] [x]<br>
+    @endforeach
 @endsection

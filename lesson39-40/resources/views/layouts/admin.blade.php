@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/app.css">
 </head>
 <body>
-@include('components.menu')
+@include('components.admin.menu')
 
 
 @yield('content')
