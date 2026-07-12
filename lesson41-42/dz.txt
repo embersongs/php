@@ -1,0 +1,7 @@
+1. Найти потенциальные уязвимости в функциональном проекте.
+https://github.com/embersongs/php/tree/master/lesson17-18
+
+2*. Проанализировать ООП проект и найти и назвать все виды связей классов
+https://github.com/embersongs/php/tree/master/lesson27-28
+
+3*. Проанализировать ООП проект и найти принципы SOLID (DRY, KISS)

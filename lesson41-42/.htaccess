@@ -1,0 +1,10 @@
+Options -Indexes
+
+<FilesMatch "\.(inc|log|ini|sql|config|yml|json)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(php|phtml|php3|php4|php5|phps)$">
+    Require all denied
+</FilesMatch>
+
