@@ -1,13 +1,26 @@
 @extends('layouts.app')
 
+@section('title', 'Админка главная')
+
 @section('menu')
     @include("components.admin.menu")
 @endsection
 
 @section('content')
-    <h2>Добро пожаловать в админку</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
 
-    <h3>Статистика</h3>
-    <p>Всего Категорий: {{ $totalCategories }}</p>
-    <p>Всего Постов: {{ $totalPosts }}</p>
+                    <div class="card-header">Добро пожаловать в админку</div>
+                    <div class="card-body">
+
+                        <h3>Статистика</h3>
+                        <p>Всего Категорий: {{ $totalCategories }}</p>
+                        <p>Всего Постов: {{ $totalPosts }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -1,28 +1,57 @@
 @extends('layouts.app')
 
+@section('title', 'Все посты')
+
 @section('menu')
     @include("components.admin.menu")
 @endsection
 
 @section('content')
-    <h2>CRUD постов</h2>
-    <a href="{{ route('admin.posts.create') }}">Создать</a><br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
 
 
-    @foreach($posts as $post)
-        <div style="margin-bottom: 10px; border: 1px solid black; padding: 5px">
-            <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                <div class="card">
+                    <div class="card-header">CRUD посты</div>
 
-            <a href="{{ route('admin.posts.edit', $post) }}">[edit]</a>
+                    <div class="card-body">
+                        <a type="button" class="btn btn-success" href="{{ route('admin.posts.create') }}">Создать
+                            пост</a>
 
-            <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
-                @method('delete')
-                <button type="submit">[x]</button>
-            </form>
+                        @foreach($posts as $post)
+                            <div class="d-flex justify-content-between align-items-center mb-2 p-2 border rounded">
 
+                                <div class="fw-bold text-truncate me-3" style="max-width: 70%;">
+                                    {{ $post->title }}
+                                </div>
+
+                                <div class="d-flex gap-2">
+                                    <a href="{{ route('admin.posts.edit', $post) }}" type="button"
+                                       class="btn btn-primary btn-sm">Править</a>
+
+
+                                    <form action="{{ route('admin.posts.destroy', $post) }}"
+                                          method="POST"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Вы уверены, что хотите удалить этот пост?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Удалить">
+                                            Удалить
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        @endforeach
+                        {{ $posts->links() }}
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+    </div>
 
-
-    @endforeach
-    {{ $posts->links('components.minimal') }}
 @endsection
