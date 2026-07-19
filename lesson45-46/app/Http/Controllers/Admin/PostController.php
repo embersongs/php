@@ -7,10 +7,13 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 
 class PostController extends Controller
 {
+
     public function index()
     {
         //TODO Вывести список постов
@@ -21,6 +24,7 @@ class PostController extends Controller
 
     public function create()
     {
+
         $categories = Category::all();
         return view('admin.posts.create')->with('categories', $categories); //вариант
     }
@@ -36,8 +40,10 @@ class PostController extends Controller
 
 
         try {
-
-            $post = Post::query()->create($request->validated());
+            $post = Post::query()->create([
+                'user_id' => Auth::id(),
+                ...$request->validated()
+            ]);
 
         } catch (\Exception $exception) {
             return redirect()->back()->with("error", $exception->getMessage())->withInput();
@@ -60,6 +66,8 @@ class PostController extends Controller
 
     public function update(StorePostRequest $request, Post $post)
     {
+        Gate::authorize('update', $post);
+
         try {
 
             $post->update($request->validated());

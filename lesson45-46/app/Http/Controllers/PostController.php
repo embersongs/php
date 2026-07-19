@@ -26,6 +26,17 @@ class PostController extends Controller
         ]);
     }
 
+    public function my()
+    {
+        $categories = Category::all();
+        $posts = auth()->user()->posts()->paginate(10);
+
+        return view('posts', [
+            'posts' => $posts,
+            'categories' => $categories
+        ]);
+    }
+
     public function show(Post $post)
     {
         //$posts = Post::all();

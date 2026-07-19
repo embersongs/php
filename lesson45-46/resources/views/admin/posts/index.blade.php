@@ -27,20 +27,23 @@
                                 </div>
 
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('admin.posts.edit', $post) }}" type="button"
-                                       class="btn btn-primary btn-sm">Править</a>
+
+                                        <a href="{{ route('admin.posts.edit', $post) }}" type="button"
+                                           class="btn btn-primary btn-sm">Править</a>
 
 
-                                    <form action="{{ route('admin.posts.destroy', $post) }}"
-                                          method="POST"
-                                          class="d-inline"
-                                          onsubmit="return confirm('Вы уверены, что хотите удалить этот пост?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Удалить">
-                                            Удалить
-                                        </button>
-                                    </form>
+
+                                        <form action="{{ route('admin.posts.destroy', $post) }}"
+                                              method="POST"
+                                              class="d-inline"
+                                              onsubmit="return confirm('Вы уверены, что хотите удалить этот пост?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Удалить">
+                                                Удалить
+                                            </button>
+                                        </form>
+
 
                                 </div>
                             </div>
