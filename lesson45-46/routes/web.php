@@ -42,3 +42,7 @@ Route::prefix('admin')
 
 
 //Route::get('/admin/categories', [AdminPostController::class, 'index'])->name('admin.categories.index');
+
+Auth::routes();
+
+

@@ -12,7 +12,7 @@ class PostSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    protected const POSTS_COUNT = 1500;
+    protected const POSTS_COUNT = 150;
 
     public function run(): void
     {
@@ -25,6 +25,7 @@ class PostSeeder extends Seeder
 
         $categoryIds = DB::table('categories')->pluck('id')->toArray();
         $categories = DB::table('categories')->get();
+        $users = DB::table('users')->get();
         $categoryNames = $categories->pluck('name', 'id')->toArray();
 
 
@@ -37,7 +38,8 @@ class PostSeeder extends Seeder
             $postsData[] = [
                 'title' => $this->generateTitle($faker, $categoryName),
                 'content' => $this->generateContent($faker, $categoryName),
-                'category_id' => $categoryId
+                'category_id' => $categoryId,
+                'user_id' => $users->random()->id,
             ];
         }
 

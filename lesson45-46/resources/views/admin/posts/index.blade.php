@@ -1,4 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
+@section('menu')
+    @include("components.admin.menu")
+@endsection
 
 @section('content')
     <h2>CRUD постов</h2>

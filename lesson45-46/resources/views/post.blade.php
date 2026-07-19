@@ -1,4 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.app')
+
+@section('menu')
+    @include("components.menu")
+@endsection
 
 @section('content')
     @if (!is_null($post))
