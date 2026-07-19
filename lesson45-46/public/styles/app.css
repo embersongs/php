@@ -1,0 +1,7 @@
+body {
+    background: silver;
+}
+
+.active {
+    font-weight: bold;
+}
