@@ -3,7 +3,7 @@
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +50,9 @@ Route::prefix('admin')
 
 Auth::routes();
 
+Route::view('/test', 'test');
 
+Route::post('/test', function (Request $request) {
+    dump($request);
+    return 'OK';
+});
