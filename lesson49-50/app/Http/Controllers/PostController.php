@@ -10,16 +10,31 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PostController extends Controller
 {
     public function index()
     {
-        //Извлечь из модели посты
-      //  $posts = DB::table('posts')->get();
-        $posts = Post::query()->paginate(10);
+        $posts = QueryBuilder::for(Post::class)
+            ->allowedFilters(
+                AllowedFilter::exact('category_id'),
+                AllowedFilter::exact('user_id'),
+                AllowedFilter::partial('title'),
+            )
+            ->paginate(8)
+            ->withQueryString();
 
-        return view('posts.index', ['posts' => $posts]);
+        $users = User::orderBy('name')->get();       // ← добавили
+        $categories = Category::orderBy('name')->get();
+
+
+        return view('posts.index', [
+            'posts' => $posts,
+            'categories' => $categories,
+            'users' => $users,
+        ]);
     }
 
     public function myPosts()
